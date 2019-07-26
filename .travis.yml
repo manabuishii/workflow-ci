@@ -1,7 +1,11 @@
 language: python
+
 python:
-  - 2.7
-  - 3.6
+  - 3.７
+os:
+  - linux
+  - osx
+
 before_script:
   - pip install cwltool cwl-runner cwltest
 script:
