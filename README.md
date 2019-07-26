@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/manabuishii/workflow-ci.svg?branch=master)](https://travis-ci.org/manabuishii/workflow-ci)
+
 # About License
 
 Under `sampledata/DATA` is GPL License.
