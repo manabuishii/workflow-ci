@@ -7,6 +7,22 @@ These data are copied from [CWL\-workflows/DATA at master · hacchy1983/CWL\-wor
 
 Other files under this repository programs are MIT license.
 
+# このレポジトリにあるもの
+
+- CWL
+  - bwa mem のコマンドラインツール
+  - samtools view のコマンドラインツール
+- BWA のテストデータ
+  - 小さなインデックスと、配列データがある、でどころは、上に記述している
+- Test
+  - 上記のCWLに関するテスト
+- CI
+  - Travis CI の設定ファイル
+    - python 3.6 の Linux でテスト
+    - python 2系 のサポート切れが近いので、テストしない
+    - python 3.7 の Linux のテストは、travis で標準サポートしていないようなので、やらない
+    - mac での 3.6 も travis で標準サポートしていないようなので、やらない
+  - Circle CI
 
 # workflow-ci
 CWL workflow and test with travis-ci
