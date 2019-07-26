@@ -1,5 +1,5 @@
-- job: bwamem-ishii.yml # テストに使うパラメータを記述
-  tool: bwamem-ishii.cwl # テストしたいCWLファイル
+- job: bwamem.yml # テストに使うパラメータを記述
+  tool: bwamem.cwl # テストしたいCWLファイル
   output:
     sam:
       basename: "output.sam"
