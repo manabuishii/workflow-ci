@@ -1,0 +1,4 @@
+sam: # type "File"
+  class: File
+  path: outputs/output.sam
+  format: http://edamontology.org/format_2573
