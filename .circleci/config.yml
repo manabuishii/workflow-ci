@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    # docker:
+    #   - image: circleci/python:3.6.4
+    # working_directory: ~/cwl_test
+    machine: true
+    steps:
+      # - run:
+      #     name: "Install Python"
+      #     command: "mkdir /tmp/_circleci_local_build_repo"
+      - checkout
+      - run:
+          name: "Install Python"
+          command: "ls -lah"
+      # - run:
+      #     name: "Install Python"
+      #     command: "sudo apt update && sudo apt install -y python3 python3-pip"
+      # - run:
+      #     name: "Install cwl-runner"
+      #     command: "sudo pip3 install cwltool cwl-runner cwltest"
+      # - run: 
+      #     name: "Run bwamem.cwl"
+      #     command: "cwl-runner --outdir=~/cwl_test bwamem.cwl bwamem.yml"
+      # - run:
+      #     name: "Run samtools-view.cwl"
+      #     command: "cwl-runner --outdir=/tmp/tmp6awq0n1f samtools-view.cwl samtools-view.yml"
+      # - run:
+      #     name: "Run test"
+      #     command: "sudo cwltest --verbose --test cwltest.yml"
+          
