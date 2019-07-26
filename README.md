@@ -35,13 +35,13 @@ workflow-ci/bwamem-ishii.cwl is valid CWL.
 
 # テンプレートを作る
 
-```
-cwltool --make-template bwamem-ishii.cwl > bwamem-ishii.yml
+```console
+$ cwltool --make-template bwamem-ishii.cwl > bwamem-ishii.yml
 ```
 
 ## 生成されたテンプレート
 
-```
+```yaml
 reference:  # type "File"
     class: File
     path: a/file/path
@@ -56,8 +56,8 @@ fastq_forward:  # type "File"
 # ヘルプで確認
 
 
-```
-cwltool bwamem-ishii.cwl --help
+```console
+$ cwltool bwamem-ishii.cwl --help
 INFO /Users/manabu/work/20190725-workflow-meetup/wfenv/bin/cwltool 1.0.20190621234233
 INFO Resolved 'bwamem-ishii.cwl' to 'file:///Users/manabu/work/20190725-workflow-meetup/workflow-ci/bwamem-ishii.cwl'
 usage: bwamem-ishii.cwl [-h] --fastq_forward FASTQ_FORWARD --fastq_reverse
@@ -78,8 +78,9 @@ optional arguments:
 
 # 
 
-cwltool --outdir=outputs bwamem-ishii.cwl bwamem-ishii.yml
-
+```console
+$ cwltool --outdir=outputs bwamem-ishii.cwl bwamem-ishii.yml
+```
 # debug
 
 parameter reference だけしかつかってないはずなのに、
@@ -114,8 +115,8 @@ INFO Final process status is success
 
 # テストを書く
 
-```
-pip install cwltest
+```console
+$ pip install cwltest
 ```
 
 # cwltest.yml を作る
@@ -127,8 +128,8 @@ output:
 以下は、成功例のところで紹介した形式で埋めておく
 
 cwltest.yml 全体
-```
-- job: vbwamem-ishii.yml # テストに使うパラメータを記述
+```yaml
+- job: bwamem-ishii.yml # テストに使うパラメータを記述
   tool: bwamem-ishii.cwl # テストしたいCWLファイル
   output:
     sam:
@@ -146,13 +147,13 @@ cwltest.yml 全体
 
 cwltestを動かすためにいれる
 
-```
-pip install cwl-runner
+```console
+$ pip install cwl-runner
 ```
 
 # テストを実行する。成功した場合
 
-```
+```console
 $ cwltest --test cwltest.yml
 Test [1/1] A test for bwa mem
 All tests passed
@@ -162,7 +163,7 @@ All tests passed
 
 違いがわかる。
 
-```
+```console
 0 tests passed, 1 failures, 0 unsupported features
 (wfenv) ➜  workflow-ci git:(master) ✗ cwltest --test cwltest.yml
 Test [1/1] A test for bwa mem
@@ -210,8 +211,8 @@ got: "sha1$a34e09aaac1ce6c6a12c7c433534a074742e6c08"
 
 # 生成されるコマンドを確認する
 
-```
-docker pull ttanjo/cwl-inspector:v0.0.6
+```console
+$ docker pull ttanjo/cwl-inspector:v0.0.6
 ```
 
 
@@ -226,3 +227,10 @@ docker pull ttanjo/cwl-inspector:v0.0.6
 - [CWL\-workflows/DATA at master · hacchy1983/CWL\-workflows](https://github.com/hacchy1983/CWL-workflows/tree/master/DATA)
 
 clone なり、ソースをzipで固めたものなりを
+
+# travisでうごかす
+
+1. travisへいく
+2. 右上のメニューから、Settingsをえらんで
+3. workflow-ciを探す
+4. スイッチオンにする。
