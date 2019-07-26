@@ -4,8 +4,8 @@
     sam:
       basename: "output.sam"
       class: "File"
-      # checksum , size がないのは、毎回cwltoolから見えるディレクトリにはいってしまい
-      # ヘッダー行に書き込まれてしまう
+      # checksum , size がないのは、output.sam のヘッダー行にランダム生成されるファイルパスが
+      # 含まれてしまい、output.sam の内容が毎回異なるため
   label: bwamem-test
   id: bwamem
   doc: A test for bwa mem
