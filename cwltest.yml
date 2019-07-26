@@ -17,8 +17,8 @@
     bam:
       basename: "output.bam"
       class: "File"
-      # checksum , size がないのは、毎回cwltoolから見えるディレクトリにはいってしまい
-      # ヘッダー行に書き込まれてしまう
+      checksum: "sha1$7ab518dd41a51a75e46186252b9fd81f4322b75e"
+      size: 3577614
   label: samtools-view-test
   id: samtoolsview
   doc: A test for samtools view
