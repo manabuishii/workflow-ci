@@ -1,0 +1,12 @@
+- job: bwamem-ishii.yml # テストに使うパラメータを記述
+  tool: bwamem-ishii.cwl # テストしたいCWLファイル
+  output:
+    sam:
+      basename: "output.sam"
+      class: "File"
+      # checksum , size がないのは、毎回cwltoolから見えるディレクトリにはいってしまい
+      # ヘッダー行に書き込まれてしまう
+  label: bwamem-test
+  id: bwamem
+  doc: A test for bwa mem
+  tags: [ command_line_tool ]

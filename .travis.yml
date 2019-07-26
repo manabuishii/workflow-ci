@@ -1,0 +1,15 @@
+language: python
+python:
+  - 2.7
+  - 3.6
+before_script:
+  - pip install cwltool cwl-runner cwltest
+script:
+  - cwltest --test cwltest.yml
+
+sudo: required
+services:
+  - docker
+
+notifications:
+  email: false

@@ -1,0 +1,24 @@
+reference:  # type "File"
+    class: File
+    path: sampledata/DATA/small.chr22.fa
+    # bwa のインデックスを全部指定しているが、
+    # これは、なくてもかまわない
+    secondaryFiles:
+    - class: File
+      path: sampledata/DATA/small.chr22.fa.amb
+    - class: File
+      path: sampledata/DATA/small.chr22.fa.ann
+    - class: File
+      path: sampledata/DATA/small.chr22.fa.bwt
+    - class: File
+      path: sampledata/DATA/small.chr22.fa.pac
+    - class: File
+      path: sampledata/DATA/small.chr22.fa.sa
+fastq_reverse:  # type "File"
+    class: File
+    path: sampledata/DATA/small.ERR034597_2.fastq
+    format: http://edamontology.org/format_1930
+fastq_forward:  # type "File"
+    class: File
+    path: sampledata/DATA/small.ERR034597_1.fastq
+    format: http://edamontology.org/format_1930
