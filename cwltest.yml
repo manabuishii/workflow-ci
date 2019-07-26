@@ -9,4 +9,17 @@
   label: bwamem-test
   id: bwamem
   doc: A test for bwa mem
+  tags: [ command_line_tool ] # tags は必須アイテムではないが、タグでフィルタリングが可能になる
+
+- job: samtools-view.yml # テストに使うパラメータを記述
+  tool: samtools-view.cwl # テストしたいCWLファイル
+  output:
+    bam:
+      basename: "output.bam"
+      class: "File"
+      # checksum , size がないのは、毎回cwltoolから見えるディレクトリにはいってしまい
+      # ヘッダー行に書き込まれてしまう
+  label: samtools-view-test
+  id: samtoolsview
+  doc: A test for samtools view
   tags: [ command_line_tool ]
