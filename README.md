@@ -236,3 +236,6 @@ clone なり、ソースをzipで固めたものなりを
 2. 右上のメニューから、Settingsをえらんで
 3. workflow-ciを探す
 4. スイッチオンにする。
+
+＃ testtest
+aa
