@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: /tmp/cwl_test
-    machine: true
+    machine:
+      image: circleci/buildpack-deps:latest-dind
     steps:
       - run:
           name: "Git clone"
@@ -22,4 +23,3 @@ jobs:
       - run:
           name: "Run test"
           command: "sudo cwltest --verbose --test cwltest.yml"
-          
