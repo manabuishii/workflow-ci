@@ -4,7 +4,7 @@ jobs:
     working_directory: /tmp/cwl_test
     machine:
       #image: circleci/buildpack-deps:latest-dind
-      image: circleci/ubuntu-1604:201903-01
+      image: ubuntu-1604:201903-01
     steps:
       - run:
           name: "Git clone"
