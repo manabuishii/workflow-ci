@@ -12,6 +12,9 @@ jobs:
           name: "Install Python"
           command: "sudo apt update && sudo apt install -y python3 python3-pip"
       - run:
+          name: "Upgrade pip, wheel and setuptools"
+          command: "sudo pip3 install -U pip wheel setuptools"
+      - run:
           name: "Install cwl-runner"
           command: "sudo pip3 install cwltool cwl-runner cwltest"
       - run:
