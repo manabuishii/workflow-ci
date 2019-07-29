@@ -3,8 +3,29 @@ jobs:
   build:
     working_directory: /tmp/cwl_test
     machine:
-      #image: circleci/buildpack-deps:latest-dind
       image: ubuntu-1604:201903-01
+    steps:
+      - run:
+          name: "Git clone"
+          command: "git clone $CIRCLE_REPOSITORY_URL /tmp/_circleci_local_build_repo"
+      - checkout
+      - run:
+          name: "Install Python"
+          command: "sudo killall -9 apt-get || true && \
+          sudo apt update && \
+          sudo apt install -y python3 python3-pip"
+      - run:
+          name: "Upgrade pip, wheel and setuptools"
+          command: "sudo pip3 install -U pip wheel setuptools"
+      - run:
+          name: "Install cwl-runner"
+          command: "sudo pip3 install cwltool cwl-runner cwltest"
+      - run:
+          name: "Run test"
+          command: "sudo cwltest --verbose --test cwltest.yml"
+  buildlocal:
+    working_directory: /tmp/cwl_test
+    machine: true
     steps:
       - run:
           name: "Git clone"
