@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/manabuishii/workflow-ci.svg?branch=master)](https://travis-ci.org/manabuishii/workflow-ci)
+[![CircleCI](https://circleci.com/gh/manabuishii/workflow-ci.svg?style=svg)](https://circleci.com/gh/manabuishii/workflow-ci)
 
 # About License
 
@@ -24,8 +25,29 @@ Other files under this repository programs are MIT license.
     - mac での 3.6 も travis で標準サポートしていないようなので、やらない
   - Circle CI
 
+# ローカル環境でのテストの実行の仕方
+
+```
+circleci local execute --job buildlocal
+```
+
+CircleCIのサービスでは、デフォルトの `build` タグが使われる。
+なので、ローカルの方に、タグを付けた。
+
+config のバージョン 2.1 になると、いろいろ制御できそうだが、
+現在のローカル実行で使えないというエラーがでてくる
+
+```
+Error: 
+You attempted to run a local build with version '2.1' of configuration.
+Local builds do not support that version at this time.
+You can use 'circleci config process' to pre-process your config into a version that local builds can run (see 'circleci help config process' for more information)
+```
+
 # workflow-ci
-CWL workflow and test with travis-ci
+
+CWL workflow and test with travis-ci, CircleCI
+
 #test
 
 どうでしょう？
@@ -255,3 +277,77 @@ clone なり、ソースをzipで固めたものなりを
 
 ＃ testtest
 aa
+
+# Circle CI でうごかす
+
+## ローカル環境にインストールする
+
+### brew でインストール
+
+```
+brew install circleci
+```
+
+### brew でいれたもののアンイストール
+
+この方法でうまくいかないときは、
+
+```
+brew uninstall circleci
+```
+
+### 直接インストールする
+
+```
+curl -fLSs https://circle.ci/cli | sudo bash
+```
+
+
+## セットアップする
+
+```
+.circleci/config.yml
+```
+
+を作る
+
+## 実際に実行する
+```
+circleci local execute
+```
+
+### 必要があれば、agent のバージョンをあげる
+
+```
+~/.circleci/build_agent_settings.json
+```
+
+を書き直す
+
+```
+{"LatestSha256":"sha256:463f8b03fa34e7609792bbc3e8983167fbb1221d9cefb1be401c0952973b3ebb"}
+```
+
+この、値の方( `sha256:` ではじまる方) の値を書き直すとうまくいくこともあるらしい。
+
+## サービス側でまわす
+
+## エラーへの対処
+
+###
+
+### 
+
+
+```
+E: Could not get lock /var/lib/apt/lists/lock - open (11: Resource temporarily unavailable)
+```
+
+[ここを参考に](https://discuss.circleci.com/t/could-not-get-lock-var-lib-apt-lists-lock/28337/6)
+
+```
+sudo killall -9 apt-get || true &&
+```
+
+を追加
+
